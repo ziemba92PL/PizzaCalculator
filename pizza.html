@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #results { 
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+    </style>
+<body>
+    <main>
+        <form action="#">
+            <section>
+                <h1>Obwód Pizzy</h1>
+                <input type="text" id="circuit">
+                <button class="btn" id="btn-circuit">Oblicz</button>
+            </section>
+            <section>
+                <h1>Średnica</h1>
+                <input type="text" id="diameter">
+                <button class="btn" id="btn-diameter">Oblicz</button>
+            </section>
+            <section>
+                <h1>Pole powierzchni</h1>
+                <input type="text" id="surface-area">
+                <button class="btn" id="btn-surface">Oblicz</button>
+            </section>
+            <section>
+                <button class="btn" id="reset">Reset</button>
+            </section>
+        </form>
+       <section id="results">
+        <div id="circuit-result">
+            <h1>Obwód</h1>
+        </div>
+        <div id="diameter-result">
+            <h1>Średnica</h1>
+        </div>
+        <div id="surface-result">
+            <h1>Pole</h1>
+        </div>
+       </section>
+       <div id="reset-results">
+            <button id="btn-reset-results">Wyczyść wyniki</button>
+       </div>
+         </main>
+    <script defer>
+        let sectionOne = document.getElementById('results');
+        let inputDiameterField = document.getElementById('diameter');
+        let btnCircuit = document.getElementById('btn-circuit');
+        let inputCircuitField = document.getElementById('circuit');
+        let inputSurfaceField = document.getElementById('surface-area');
+                          
+        btnCircuit.addEventListener('click', () => {
+
+            let el1 = document.createElement('p');
+            let el2 = document.createElement('p');
+            let el3 = document.createElement('p');
+            document.getElementById('circuit-result').appendChild(el1);
+            document.getElementById('diameter-result').appendChild(el2);
+            document.getElementById('surface-result').appendChild(el3);
+            
+            let inputCircuitValue = inputCircuitField.value;
+            let inputDiameterValue = inputDiameterField.value;
+            
+            let calculatedSurfaceFromCircuit = 3.14 * ((inputCircuitValue / (2 * 3.14))**2);
+            let calculatedDiameterFromCircuit = inputCircuitValue / 3.14;
+            
+            inputSurfaceField.value = calculatedSurfaceFromCircuit;
+            inputDiameterField.value = calculatedDiameterFromCircuit;
+            
+            el2.innerHTML = Math.floor(calculatedDiameterFromCircuit);
+            el3.innerHTML = Math.floor(calculatedSurfaceFromCircuit);
+            el1.innerHTML = Math.floor(inputCircuitValue);
+
+        });
+        let btnDiameter = document.getElementById('btn-diameter');
+        btnDiameter.addEventListener('click', () => {
+           
+            let el1 = document.createElement('p');
+            let el2 = document.createElement('p');
+            let el3 = document.createElement('p');
+            document.getElementById('circuit-result').appendChild(el1);
+            document.getElementById('diameter-result').appendChild(el2);
+            document.getElementById('surface-result').appendChild(el3);
+
+            
+            let inputDiameterValue = inputDiameterField.value;
+            let inputCircuitValue = inputCircuitField.value;
+
+            let calculatedCircuitFromDiameter = 2 * 3.14 * (inputDiameterValue / 2);
+            let calculatedSurfaceFromCircuit =  3.14 * ((0.5 * inputDiameterValue)**2);
+           
+           inputCircuitField.value = calculatedCircuitFromDiameter;
+           inputSurfaceField.value = calculatedSurfaceFromCircuit;
+           
+           el1.innerHTML = Math.floor(calculatedCircuitFromDiameter);
+           el2.innerHTML = Math.floor(inputDiameterValue);
+           el3.innerHTML = Math.floor(calculatedSurfaceFromCircuit);
+        });
+
+        let btnSurface = document.getElementById('btn-surface');
+        btnSurface.addEventListener('click', () => {
+
+            let el1 = document.createElement('p');
+            let el2 = document.createElement('p');
+            let el3 = document.createElement('p');
+            document.getElementById('circuit-result').appendChild(el1);
+            document.getElementById('diameter-result').appendChild(el2);
+            document.getElementById('surface-result').appendChild(el3);
+
+            let inputSurfaceValue = inputSurfaceField.value;
+            calculatedCircuitFromSurface  = 2 * 3.14 * Math.sqrt(inputSurfaceValue / 3.14);
+            calculatedDiameterFromSurface = 2 * Math.sqrt(inputSurfaceValue / 3.14);
+
+            inputCircuitField.value = calculatedCircuitFromSurface;
+            inputDiameterField.value = calculatedDiameterFromSurface;
+            
+            el1.innerHTML = Math.floor(calculatedCircuitFromSurface);
+            el2.innerHTML = Math.floor(calculatedDiameterFromSurface);
+            el3.innerHTML = Math.floor(inputSurfaceValue);
+        })
+
+        let btnReset = document.getElementById('reset');
+        btnReset.addEventListener('click', () => {
+            inputCircuitField.value = '';
+            inputDiameterField.value = '';
+            inputSurfaceField.value = '';
+        })
+
+        let btnResetResults = document.getElementById('btn-reset-results');
+        btnResetResults.addEventListener('click', () => {
+            let deleteElements = document.querySelectorAll('p');
+            console.log(deleteElements);
+            //deleteElements.forEach(e => e.remove());
+        })
+
+    </script>
+</body>
+</html>
