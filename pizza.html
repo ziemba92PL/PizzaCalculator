@@ -61,15 +61,19 @@
             el2 = document.createElement('p');
             el3 = document.createElement('p');
         };
+
+        function addParagraph() {
+            document.getElementById('circuit-result').appendChild(el1);
+            document.getElementById('diameter-result').appendChild(el2);
+            document.getElementById('surface-result').appendChild(el3);
+        }
                            
         let btnCircuit = document.getElementById('btn-circuit');
         btnCircuit.addEventListener('click', () => {           
             
-            CreateParagraph();        
-            document.getElementById('circuit-result').appendChild(el1);
-            document.getElementById('diameter-result').appendChild(el2);
-            document.getElementById('surface-result').appendChild(el3);
-
+            CreateParagraph();   
+            addParagraph();     
+           
             let inputCircuitValue = inputCircuitField.value;
             let inputDiameterValue = inputDiameterField.value;
             
@@ -88,10 +92,8 @@
         btnDiameter.addEventListener('click', () => {
            
             CreateParagraph();
-            document.getElementById('circuit-result').appendChild(el1);
-            document.getElementById('diameter-result').appendChild(el2);
-            document.getElementById('surface-result').appendChild(el3);
-
+            addParagraph();   
+          
             let inputDiameterValue = inputDiameterField.value;
             let inputCircuitValue = inputCircuitField.value;
 
@@ -110,10 +112,8 @@
         btnSurface.addEventListener('click', () => {
 
             CreateParagraph();
-            document.getElementById('circuit-result').appendChild(el1);
-            document.getElementById('diameter-result').appendChild(el2);
-            document.getElementById('surface-result').appendChild(el3);
-
+            addParagraph();   
+           
             let inputSurfaceValue = inputSurfaceField.value;
             calculatedCircuitFromSurface  = 2 * 3.14 * Math.sqrt(inputSurfaceValue / 3.14);
             calculatedDiameterFromSurface = 2 * Math.sqrt(inputSurfaceValue / 3.14);
