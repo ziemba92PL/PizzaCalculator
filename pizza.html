@@ -77,15 +77,15 @@
             let inputCircuitValue = inputCircuitField.value;
             let inputDiameterValue = inputDiameterField.value;
             
-            let calculatedSurfaceFromCircuit = 3.14 * ((inputCircuitValue / (2 * 3.14))**2);
-            let calculatedDiameterFromCircuit = inputCircuitValue / 3.14;
+            let calculatedSurfaceFromCircuit = Math.floor( 3.14 * ((inputCircuitValue / (2 * 3.14))**2));
+            let calculatedDiameterFromCircuit = Math.floor(inputCircuitValue / 3.14);
             
             inputSurfaceField.value = calculatedSurfaceFromCircuit;
             inputDiameterField.value = calculatedDiameterFromCircuit;
             
-            el2.innerHTML = Math.floor(calculatedDiameterFromCircuit);
-            el3.innerHTML = Math.floor(calculatedSurfaceFromCircuit);
-            el1.innerHTML = Math.floor(inputCircuitValue);
+            el2.innerHTML = calculatedDiameterFromCircuit;
+            el3.innerHTML = calculatedSurfaceFromCircuit;
+            el1.innerHTML = inputCircuitValue;
 
         });
         let btnDiameter = document.getElementById('btn-diameter');
@@ -97,15 +97,15 @@
             let inputDiameterValue = inputDiameterField.value;
             let inputCircuitValue = inputCircuitField.value;
 
-            let calculatedCircuitFromDiameter = 2 * 3.14 * (inputDiameterValue / 2);
-            let calculatedSurfaceFromCircuit =  3.14 * ((0.5 * inputDiameterValue)**2);
+            let calculatedCircuitFromDiameter = Math.floor(2 * 3.14 * (inputDiameterValue / 2));
+            let calculatedSurfaceFromCircuit =  Math.floor(3.14 * ((0.5 * inputDiameterValue)**2));
            
             inputCircuitField.value = calculatedCircuitFromDiameter;
             inputSurfaceField.value = calculatedSurfaceFromCircuit;
            
-            el1.innerHTML = Math.floor(calculatedCircuitFromDiameter);
-            el2.innerHTML = Math.floor(inputDiameterValue);
-            el3.innerHTML = Math.floor(calculatedSurfaceFromCircuit);
+            el1.innerHTML = calculatedCircuitFromDiameter;
+            el2.innerHTML = inputDiameterValue;
+            el3.innerHTML = calculatedSurfaceFromCircuit;
         });
 
         let btnSurface = document.getElementById('btn-surface');
@@ -115,15 +115,15 @@
             addParagraph();   
            
             let inputSurfaceValue = inputSurfaceField.value;
-            calculatedCircuitFromSurface  = 2 * 3.14 * Math.sqrt(inputSurfaceValue / 3.14);
-            calculatedDiameterFromSurface = 2 * Math.sqrt(inputSurfaceValue / 3.14);
+            calculatedCircuitFromSurface  = Math.floor(2 * 3.14 * Math.sqrt(inputSurfaceValue / 3.14));
+            calculatedDiameterFromSurface = Math.floor(2 * Math.sqrt(inputSurfaceValue / 3.14));
 
             inputCircuitField.value = calculatedCircuitFromSurface;
             inputDiameterField.value = calculatedDiameterFromSurface;
             
-            el1.innerHTML = Math.floor(calculatedCircuitFromSurface);
-            el2.innerHTML = Math.floor(calculatedDiameterFromSurface);
-            el3.innerHTML = Math.floor(inputSurfaceValue);
+            el1.innerHTML = calculatedCircuitFromSurface;
+            el2.innerHTML = calculatedDiameterFromSurface;
+            el3.innerHTML = inputSurfaceValue;
         })
 
         let btnReset = document.getElementById('reset');
